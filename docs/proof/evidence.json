@@ -1,9 +1,9 @@
 {
   "schema": 1,
   "repository": "brunnojob/c-offshore-modbus-frame-audit",
-  "source_commit": "457a3c888af6b3d069c65e25915784be72d3bb5f",
-  "generated_at": "2026-10-10T02:35:54.983825+00:00",
-  "run_url": "https://github.com/brunnojob/c-offshore-modbus-frame-audit/actions/runs/38017542392",
+  "source_commit": "54d1da9dd0e12a8b4a147be693de3c838dec75e0",
+  "generated_at": "2026-10-10T02:44:08.277964+00:00",
+  "run_url": "https://github.com/brunnojob/c-offshore-modbus-frame-audit/actions/runs/38018035983",
   "inputs_sha256": {
     ".proof/scenarios.json": "ef95765d356bda5b5541fb43d961c9857971b40696351594a8750ffe254f9928",
     "examples/input.txt": "5e86d2c961b3fe416abc349035fa4927ac658c5b992e5d7afe3c4a26cfe43fed"
@@ -23,7 +23,7 @@
       "exit": 0,
       "expected_exit": 0,
       "passed": true,
-      "seconds": 1.605,
+      "seconds": 0.251,
       "output": "cc -std=c17 -Wall -Wextra -Werror -pedantic -O2 src/main.c -lm -o app\n./app --self-test\nCRC and corruption tests passed\nslave=1 function=3 registers=10\naccepted=1 rejected=0\n",
       "output_sha256": "4b56754241ad45ae8bda5d0e5631f5c3ab10fa52760fa0896369a9da57056467"
     },
