@@ -1,0 +1,22 @@
+$ bash -e -o pipefail -c make test && ./app < examples/input.txt
+cc -std=c17 -Wall -Wextra -Werror -pedantic -O2 src/main.c -lm -o app
+./app --self-test
+CRC and corruption tests passed
+slave=1 function=3 registers=10
+accepted=1 rejected=0
+
+$ ./app
+slave=1 function=3 registers=10
+accepted=1 rejected=0
+
+$ ./app
+missing input
+
+$ ./app
+invalid byte
+
+$ ./app --unsupported
+unsupported command arguments
+
+$ ./app
+input record too large

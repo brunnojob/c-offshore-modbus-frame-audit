@@ -1,0 +1,98 @@
+{
+  "schema": 1,
+  "repository": "brunnojob/c-offshore-modbus-frame-audit",
+  "source_commit": "457a3c888af6b3d069c65e25915784be72d3bb5f",
+  "generated_at": "2026-10-10T02:35:54.983825+00:00",
+  "run_url": "https://github.com/brunnojob/c-offshore-modbus-frame-audit/actions/runs/38017542392",
+  "inputs_sha256": {
+    ".proof/scenarios.json": "ef95765d356bda5b5541fb43d961c9857971b40696351594a8750ffe254f9928",
+    "examples/input.txt": "5e86d2c961b3fe416abc349035fa4927ac658c5b992e5d7afe3c4a26cfe43fed"
+  },
+  "cases": [
+    {
+      "display": false,
+      "name": "make test && ./app < examples/input.txt",
+      "argv": [
+        "bash",
+        "-e",
+        "-o",
+        "pipefail",
+        "-c",
+        "make test && ./app < examples/input.txt"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "passed": true,
+      "seconds": 1.605,
+      "output": "cc -std=c17 -Wall -Wextra -Werror -pedantic -O2 src/main.c -lm -o app\n./app --self-test\nCRC and corruption tests passed\nslave=1 function=3 registers=10\naccepted=1 rejected=0\n",
+      "output_sha256": "4b56754241ad45ae8bda5d0e5631f5c3ab10fa52760fa0896369a9da57056467"
+    },
+    {
+      "display": true,
+      "name": "Application demonstration with checked output",
+      "argv": [
+        "./app"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "passed": true,
+      "seconds": 0.051,
+      "output": "slave=1 function=3 registers=10\naccepted=1 rejected=0\n",
+      "output_sha256": "b5829c1eb54fd7519da422a7e75e19a3f42710944f411cf57e5ea5d91ad069e7"
+    },
+    {
+      "display": true,
+      "name": "Reject an empty capture",
+      "argv": [
+        "./app"
+      ],
+      "exit": 2,
+      "expected_exit": 2,
+      "passed": true,
+      "seconds": 0.051,
+      "output": "missing input\n",
+      "output_sha256": "e108e9abb244623e01f96efedd4006bbb9cdf4b61840b948d6bf644ffe78bede"
+    },
+    {
+      "display": true,
+      "name": "Reject malformed input",
+      "argv": [
+        "./app"
+      ],
+      "exit": 2,
+      "expected_exit": 2,
+      "passed": true,
+      "seconds": 0.051,
+      "output": "invalid byte\n",
+      "output_sha256": "0b94f78d52b23918de42e4337689355032895da4c3d47a06b9c39f22e9169ac7"
+    },
+    {
+      "display": true,
+      "name": "Reject unsupported invocation",
+      "argv": [
+        "./app",
+        "--unsupported"
+      ],
+      "exit": 2,
+      "expected_exit": 2,
+      "passed": true,
+      "seconds": 0.051,
+      "output": "unsupported command arguments\n",
+      "output_sha256": "8671e08a3718f115decd7eb1e7970691e3a2180c5a869d0e9ccd54e6d4fa8a80"
+    },
+    {
+      "display": true,
+      "name": "Reject an oversized input record",
+      "argv": [
+        "./app"
+      ],
+      "exit": 2,
+      "expected_exit": 2,
+      "passed": true,
+      "seconds": 0.051,
+      "output": "input record too large\n",
+      "output_sha256": "d0f1bb9ab1c99d914df3de66c3268650fd8fcb942b2d0f116490dc6c41e6f800"
+    }
+  ],
+  "passed": true
+}
