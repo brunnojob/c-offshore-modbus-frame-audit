@@ -18,6 +18,7 @@ static size_t fields(char *line, char **out, size_t capacity) {
     char *p = line;
     while (*p) {
         if (count == capacity) fail("too many fields");
+        if (*p == ',') fail("empty field");
         out[count++] = p;
         char *separator = strchr(p, ',');
         if (!separator) break;
@@ -62,6 +63,7 @@ static int inspect(const uint8_t *bytes, size_t n, int print) {
     return 1;
 }
 int main(int argc, char **argv) {
+    if (argc > 1 && !(argc == 2 && !strcmp(argv[1], "--self-test"))) fail("unsupported command arguments");
     if (argc == 2 && !strcmp(argv[1], "--self-test")) {
         uint8_t frame[] = {1, 3, 2, 0, 10, 0, 0}; uint16_t c = crc(frame, 5);
         frame[5] = c & 255; frame[6] = c >> 8;
@@ -71,6 +73,7 @@ int main(int argc, char **argv) {
     }
     char line[4096]; unsigned rejected = 0, accepted = 0;
     while (fgets(line, sizeof line, stdin)) {
+        if (strlen(line) == sizeof line - 1 && line[sizeof line - 2] != '\n') fail("input record too large");
         uint8_t bytes[256]; size_t n = decode(line, bytes);
         if (inspect(bytes, n, 1)) accepted++; else { rejected++; puts("rejected"); }
     }
