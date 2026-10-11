@@ -1,5 +1,7 @@
 # c-offshore-modbus-frame-audit
 
+[View execution evidence](https://brunnojob.github.io/devstart-lab/proofs/c-offshore-modbus-frame-audit/) · [Run browser demo](https://brunnojob.github.io/devstart-lab/proofs/c-offshore-modbus-frame-audit/demo/)
+
 Validate captured Modbus RTU frames, CRC integrity, exception responses and register decoding.
 
 ```sh
